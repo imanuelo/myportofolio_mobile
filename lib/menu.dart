@@ -4,13 +4,13 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
   final String npm = "2506619455";
-  final String nama = "Juan Imanuel Limpong";
+  final String nama = "Juan Imanuel";
   final String kelas = "PBP A";
 
   final List<ItemHomePage> items = [
-    ItemHomePage("Lihat Proyek", Icons.folder),
-    ItemHomePage("Tambah Proyek", Icons.add_circle),
-    ItemHomePage("Logout", Icons.logout),
+    ItemHomePage("Lihat Proyek", Icons.folder, Colors.blue),
+    ItemHomePage("Tambah Proyek", Icons.add_circle, Colors.orange),
+    ItemHomePage("Logout", Icons.logout, Colors.red),
   ];
 
   @override
@@ -19,10 +19,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'MyPortofolio',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -53,7 +50,7 @@ class MyHomePage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                       ),
-                    )
+                    ),
                   ),
 
                   GridView.count(
@@ -105,8 +102,9 @@ class InfoCard extends StatelessWidget {
 class ItemHomePage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomePage(this.name, this.icon);
+  ItemHomePage(this.name, this.icon, this.color);
 }
 
 class ItemCard extends StatelessWidget {
@@ -117,7 +115,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
